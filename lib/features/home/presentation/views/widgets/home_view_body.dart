@@ -1,4 +1,3 @@
-import 'package:bookly/core/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_app_bar.dart';
