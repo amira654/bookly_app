@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/assets_manager.dart';
-import 'package:bookly/features/home/presentation/views/home_Vvew.dart';
+import 'package:bookly/features/home/presentation/views/home_vew.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
