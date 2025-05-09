@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/style.dart';
@@ -6,7 +7,9 @@ import 'books_action.dart';
 import 'custom_list_view_item.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({super.key, required this.book});
+
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +21,16 @@ class BookDetailsSection extends StatelessWidget {
           padding: EdgeInsets.symmetric(
             horizontal: width * 0.2,
           ),
-          child: const CustomListviewItem(),
+          child: CustomListviewItem(
+            image: book.volumeInfo.imageLinks?.thumbnail ?? '',
+          ),
         ),
         const SizedBox(
           height: 43,
         ),
         Text(
-          "The Jungle Book",
+          textAlign: TextAlign.center,
+          book.volumeInfo.title!,
           style: Styles.textStyle30.copyWith(
             fontWeight: FontWeight.normal,
           ),
@@ -35,7 +41,7 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: 0.7,
           child: Text(
-            "Rudyard Kipling",
+            book.volumeInfo.authors?[0] ?? '',
             style: Styles.textStyle18.copyWith(
                 color: const Color(0xFF707070),
                 fontStyle: FontStyle.italic,
@@ -45,13 +51,17 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 18,
         ),
-        const BookRating(
+        BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
+          rating: book.volumeInfo.averageRating ?? 0,
+          count: book.volumeInfo.ratingsCount ?? 0,
         ),
         const SizedBox(
           height: 37,
         ),
-        const BooksAction(),
+        BooksAction(
+          bookModel: book,
+        ),
       ],
     );
   }

@@ -1,20 +1,20 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class CustomListviewItem extends StatelessWidget {
-  const CustomListviewItem({super.key, required this.image});
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({Key? key, required this.imageUrl}) : super(key: key);
 
-  final String image;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: AspectRatio(
-        aspectRatio: 2.6 / 4,
+        aspectRatio: 2.5 / 4,
         child: CachedNetworkImage(
           fit: BoxFit.fill,
-          imageUrl: image,
+          imageUrl: imageUrl,
           errorWidget: (context, url, error) => const Icon(
             Icons.error,
           ),
